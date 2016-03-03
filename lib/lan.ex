@@ -25,7 +25,7 @@ defmodule Ams.Lan do
     :timer.sleep(100)
     IO.puts "Get listings: lanid: #{lanid}; page: #{page}; rows: #{rows}"
 
-    case HTTPoison.get("http://api.arbetsformedlingen.se/af/v0/platsannonser/matchning?lanid=#{lanid}&antalrader=#{rows}&Sida=#{page}", %{"Accept" => "application/json", "Accept-Language" => "sv"}) do
+    case HTTPoison.get("http://api.arbetsformedlingen.se/af/v0/platsannonser/matchning?lanid=#{lanid}&antalrader=#{rows}&sida=#{page}", %{"Accept" => "application/json", "Accept-Language" => "sv"}) do
       {:ok, %HTTPoison.Response{status_code: 200, body: listings}} ->
         listings = Poison.decode!(listings)["matchningslista"]["matchningdata"]
 
